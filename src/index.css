@@ -1,0 +1,13 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+.card-image img{
+    width: 150px;
+    margin: 0 auto;
+    height: 180px;
+    object-fit: contain;
+}
+.card{
+    height: 400px;
+    padding: 1rem;
+    cursor: pointer;
+}

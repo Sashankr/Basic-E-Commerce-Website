@@ -24,7 +24,7 @@ const ProductListing = () => {
   },[])
   
   return (
-    <div className="ui grid container">
+    <div className="columns is-multiline is-mobile">
       <ProductComponent/>
     </div>
   );

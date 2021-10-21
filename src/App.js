@@ -10,11 +10,13 @@ const App = () => {
     <div className="App">
       <Router>
         <Header />
-        <Switch>
-          <Route path="/" exact component={ProductListing} />
-          <Route path="/product/:productId" exact component={ProductDetail} />
-          <Route>404 Not Found!</Route>
-        </Switch>
+        <div className="container p-5">
+          <Switch>
+            <Route path="/" exact component={ProductListing} />
+            <Route path="/product/:productId" exact component={ProductDetail} />
+            <Route>404 Not Found!</Route>
+          </Switch>
+        </div>
       </Router>
     </div>
   );
