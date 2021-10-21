@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const { productId } = useParams();
 
   const product = useSelector((state) => state.product);
+  
   useEffect(() => {
     if (productId && productId !== "") dispatch(fetchProduct(productId));
 
