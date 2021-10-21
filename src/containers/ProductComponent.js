@@ -8,17 +8,19 @@ const ProductComponent = () => {
 
     return (
       <div key={index} className="column is-one-quarter">
-        <div class="card">
-          <div class="card-image">
-            <figure class="">
+        <div className="card">
+          <div className="card-image">
+            <figure className="">
               <img src={image} alt={title} />
             </figure>
           </div>
-          <div class="card-content">
-            <div class="content">
-              <div className="header">{title}</div>
+          <div className="">
+            <div className="content">
+              <div className="header mt-3">{title}</div>
+              <div className="product-price-category">
               <div className="meta price">$ {price}</div>
-              <span class="tag is-primary subtitle is-6 mt-3">{category}</span>
+              <div className="tag is-primary subtitle is-6 mt-3">{category}</div>
+              </div>
             </div>
           </div>
         </div>
