@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { selectedProducts } from "../redux/actions/productActions";
+import { selectedProducts,removeSelectedProducts } from "../redux/actions/productActions";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -24,17 +24,22 @@ const ProductDetails = () => {
 
   useEffect(() => {
     if (productId && productId !== "") getProductDetails();
+    
+    return ()=>{
+      dispatch(removeSelectedProducts())
+    }
+
+
   }, [productId]);
 
   const { category, description, image, price, rating, title } = product;
 
-  console.log(product);
 
   return (
     <div>
       <h1 className="title">{title}</h1>
       <div className="product-detail-wrapper">
-        <img className="product-detail-image" src={image} alt={title} />
+        <img loading='lazy' className="product-detail-image" src={image} alt={title} />
         <div className="product-additional-details">
           <h3 className="subtitle">{description}</h3>
           <p className="price is-size-3	is-family-monospace	">Price: $ {price}</p>
