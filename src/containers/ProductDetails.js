@@ -11,19 +11,8 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const { productId } = useParams();
-  console.log(productId);
 
   const product = useSelector((state) => state.product);
-
-  // const getProductDetails = async () => {
-  //   const response = await axios
-  //     .get(`https://fakestoreapi.com/products/${productId}`)
-  //     .catch((err) => {
-  //       console.log("error", err);
-  //     });
-  //   dispatch(selectedProducts(response.data));
-  // };
-
   useEffect(() => {
     if (productId && productId !== "") dispatch(fetchProduct(productId));
 
