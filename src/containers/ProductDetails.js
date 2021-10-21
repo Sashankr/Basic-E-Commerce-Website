@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectedProducts,
+  fetchProduct,
   removeSelectedProducts,
 } from "../redux/actions/productActions";
 
@@ -16,17 +15,17 @@ const ProductDetails = () => {
 
   const product = useSelector((state) => state.product);
 
-  const getProductDetails = async () => {
-    const response = await axios
-      .get(`https://fakestoreapi.com/products/${productId}`)
-      .catch((err) => {
-        console.log("error", err);
-      });
-    dispatch(selectedProducts(response.data));
-  };
+  // const getProductDetails = async () => {
+  //   const response = await axios
+  //     .get(`https://fakestoreapi.com/products/${productId}`)
+  //     .catch((err) => {
+  //       console.log("error", err);
+  //     });
+  //   dispatch(selectedProducts(response.data));
+  // };
 
   useEffect(() => {
-    if (productId && productId !== "") getProductDetails();
+    if (productId && productId !== "") dispatch(fetchProduct(productId));
 
     return () => {
       dispatch(removeSelectedProducts());
@@ -52,8 +51,8 @@ const ProductDetails = () => {
           <p className="rating">
             {rating?.rate} / 5 &#40;{rating?.count}&#41;{" "}
           </p>
-          <div class="tag is-primary category">{category}</div>
-          <button class="button is-link mt-5">ADD TO CART</button>
+          <div className="tag is-primary category">{category}</div>
+          <button className="button is-link mt-5">ADD TO CART</button>
         </div>
       </div>
     </div>

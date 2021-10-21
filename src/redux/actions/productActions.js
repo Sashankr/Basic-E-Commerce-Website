@@ -1,15 +1,25 @@
-import axios from "axios";
 import { ActionTypes } from "../constants/action-types";
+import eCommerceApi from '../../apis/eCommerceApi'
 
-export const fetchProducts = async () => {
+export const fetchProducts = () => async (dispatch) => {
   //api call needs to be done here
-  const response = await axios.get("/products");
+    const response = await eCommerceApi.get("/products");
 
-  return {
-    type: ActionTypes.SET_PRODUCTS,
-    payload: response,
-  };
-}; 
+    dispatch({
+      type: ActionTypes.FETCH_PRODUCTS,
+      payload: response.data,      
+    })
+};
+
+export const fetchProduct = (id) => async (dispatch) => {
+  //api call needs to be done here
+    const response = await eCommerceApi.get(`/products/${id}`);
+
+    dispatch({
+      type: ActionTypes.SELECTED_PRODCUTS,
+      payload: response.data,      
+    })
+};
 
 export const setProducts = (products) => {
   return {
